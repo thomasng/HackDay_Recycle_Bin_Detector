@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RecycleApp.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ImageCaptureLocation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Hackday\CaptureRecycleImage</Value>
+    </Setting>
+    <Setting Name="RegionEndpoint" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://australiaeast.api.cognitive.microsoft.com</Value>
+    </Setting>
+    <Setting Name="TrainingKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">591691a2ff4d4ba8a4341dcdad99f40c</Value>
+    </Setting>
+    <Setting Name="PredictionKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">886438d4063d4d5d9468af434f8efaba</Value>
+    </Setting>
+    <Setting Name="PreductionProjectId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ec74ba50-9f97-4dcc-a201-e1f18171add7</Value>
+    </Setting>
+    <Setting Name="PublishedPredictionName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Iteration5</Value>
+    </Setting>
+    <Setting Name="LearningUploadLoation" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Hackday\UploadTagImage</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
