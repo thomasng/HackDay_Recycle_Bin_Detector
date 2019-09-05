@@ -44,6 +44,9 @@
             // 
             // webCameraControl1
             // 
+            this.webCameraControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.webCameraControl1.Location = new System.Drawing.Point(12, 12);
             this.webCameraControl1.Name = "webCameraControl1";
             this.webCameraControl1.Size = new System.Drawing.Size(383, 292);
@@ -62,6 +65,7 @@
             // 
             // imageButton
             // 
+            this.imageButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.imageButton.Enabled = false;
             this.imageButton.Location = new System.Drawing.Point(75, 323);
             this.imageButton.Margin = new System.Windows.Forms.Padding(2);
@@ -112,8 +116,7 @@
             // 
             // StatisticText
             // 
-            this.StatisticText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.StatisticText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.StatisticText.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatisticText.ForeColor = System.Drawing.Color.Maroon;
             this.StatisticText.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -170,6 +173,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.label1.Location = new System.Drawing.Point(634, 12);
@@ -198,7 +202,7 @@
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.webCameraControl1);
             this.Name = "MainForm";
-            this.Text = "MYOB Recycle Bin Detector  App";
+            this.Text = "MYOB AI Recycle Bin Detector";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
