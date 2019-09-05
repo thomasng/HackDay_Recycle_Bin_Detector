@@ -15,19 +15,19 @@ namespace RecycleApp
     public class PredictService
     {
         /*
-        private const string RegionEndpoint = "https://australiaeast.api.cognitive.microsoft.com";
-        string trainingKey = "591691a2ff4d4ba8a4341dcdad99f40c";
-        string predictionKey = "886438d4063d4d5d9468af434f8efaba";
-        Guid projectId => new Guid("ec74ba50-9f97-4dcc-a201-e1f18171add7");*/
+        private const string CustomVisionEndpoint = "https://australiaeast.api.cognitive.microsoft.com";
+        string TrainingKey = "591691a2ff4d4ba8a4341dcdad99f40c";
+        string PredictionKey = "886438d4063d4d5d9468af434f8efaba";
+        Guid CustomVisionProjectId => new Guid("ec74ba50-9f97-4dcc-a201-e1f18171add7");*/
 
 
-        private const string RegionEndpoint = "https://australiaeast.api.cognitive.microsoft.com";
-        string trainingKey = "591691a2ff4d4ba8a4341dcdad99f40c";
-        string predictionKey = "886438d4063d4d5d9468af434f8efaba";
+        private const string CustomVisionEndpoint = "https://australiaeast.api.cognitive.microsoft.com";
+        string TrainingKey = "591691a2ff4d4ba8a4341dcdad99f40c";
+        string PredictionKey = "886438d4063d4d5d9468af434f8efaba";
 
         // Main
-        //Guid projectId => new Guid("8316abab-6877-4f3c-a724-5db2ec942b93");
-        Guid projectId => new Guid("ec74ba50-9f97-4dcc-a201-e1f18171add7");
+        //Guid CustomVisionProjectId => new Guid("8316abab-6877-4f3c-a724-5db2ec942b93");
+        Guid CustomVisionProjectId => new Guid("ec74ba50-9f97-4dcc-a201-e1f18171add7");
 
         public CustomVisionTrainingClient _trainingApi;
 
@@ -37,8 +37,8 @@ namespace RecycleApp
             // Create the Api, passing in the training key
             var trainingApi = new CustomVisionTrainingClient()
             {
-                ApiKey = trainingKey,
-                Endpoint = RegionEndpoint
+                ApiKey = TrainingKey,
+                Endpoint = CustomVisionEndpoint
             };
             return trainingApi;
         }
@@ -46,20 +46,20 @@ namespace RecycleApp
         public Dictionary<string, double> Predict(string imageFile)
         {
         
-            // Now there is a trained endpoint, it can be used to make a prediction
+            // This is published Iteration name
             var publishedName = Settings.Default.PublishedPredictionName;
 
             // Create a prediction endpoint, passing in the obtained prediction key
             var endpoint = new CustomVisionPredictionClient()
             {
-                ApiKey = predictionKey,
-                Endpoint = RegionEndpoint
+                ApiKey = PredictionKey,
+                Endpoint = CustomVisionEndpoint
             };
 
             // Make a prediction against the new project
             Console.WriteLine("Making a prediction:");
          
-            var result = endpoint.DetectImage(projectId, publishedName, File.OpenRead(imageFile));
+            var result = endpoint.DetectImage(CustomVisionProjectId, publishedName, File.OpenRead(imageFile));
 
             return CalculateRating(result.Predictions.ToList());
 
