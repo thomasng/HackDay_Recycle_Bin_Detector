@@ -106,9 +106,11 @@ namespace RecycleApp
             var orderedPredictModels = results.OrderByDescending(a => a.Value).ToList();
 
             if (orderedPredictModels.Count == 0)
-                ResultText.Text = "No sure. Please click one of option on the right";
+                ResultText.Text = "I'm not sure. Please let me know which bin this should go in.";
             else
-                ResultText.Text = $"Please put in '{orderedPredictModels[0].Key}' recycle bin !";
+                ResultText.Text = $"{orderedPredictModels[0].Key.ToUpper()} BIN!" + Environment.NewLine +
+                    "The power is yours!";
+
 
             var tagResults = new Dictionary<string, double>();
 
@@ -168,8 +170,14 @@ namespace RecycleApp
                 dest = Path.Combine(dest, Path.GetFileName(_currentCaptureImageFile));
                 File.Copy(_currentCaptureImageFile, dest);
 
-                MessageBox.Show($"Image is copied to '{tag}' location for future machine learning");
+                MessageBox.Show($"Thanks for your help! I'll study and learn more about the {tag} bin tonight!",
+                    "Captain Planet");
             }
+        }
+
+        private void StatisticText_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
