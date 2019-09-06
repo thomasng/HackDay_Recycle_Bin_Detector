@@ -38,6 +38,16 @@ namespace CustomVisionObjectUploader
             return new double[] {0.180147052, 0.239820287, 0.6887255, 0.235294119};
         }
 
+        public void ContinueRun(int noOfseconds)
+        {
+            do
+            {
+                Run();
+                Thread.Sleep(noOfseconds*1000);
+            } while (true);          
+        }
+
+
         public void Run()
         {
             // Add your training & prediction key from the settings page of the portal
@@ -67,8 +77,7 @@ namespace CustomVisionObjectUploader
             UploadImageWithTag(project, mixedTag, "mixed");
             UploadImageWithTag(project, landfillTag, "landfill");
 
-            Console.WriteLine("Press a key to exit program...");
-            Console.ReadKey();
+        
         }
 
 
