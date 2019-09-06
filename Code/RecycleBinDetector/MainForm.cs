@@ -89,13 +89,21 @@ namespace RecycleApp
 
                 var fileName = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".jpg";
                 var capturefileName = Path.Combine(Settings.Default.ImageCaptureLocation, fileName);
-                webCameraControl1.GetCurrentImage().Save(capturefileName, ImageFormat.Jpeg);
+                try
+                {
+                    webCameraControl1.GetCurrentImage().Save(capturefileName, ImageFormat.Jpeg);
+                }
+                catch (Exception ex)
+                {
+                }
 
                 var predictModels = new PredictService().Predict(capturefileName);
                
                 DisplayResult(predictModels);
 
                 _currentCaptureImageFile = capturefileName;
+
+                PlaySoundFile("PowerIsYours.wav");
             }
             catch (Exception exception)
             {
@@ -141,21 +149,25 @@ namespace RecycleApp
         private void btnMixedBin_Click(object sender, EventArgs e)
         {
             CopyFileToUploadLoation("mixed");
+            PlaySoundFile("Bin1Sound.wav");
         }
 
         private void btnOrganicbin_Click(object sender, EventArgs e)
         {
             CopyFileToUploadLoation("organic");
+            PlaySoundFile("Bin2Sound.wav");
         }
 
         private void btnPapaerBin_Click(object sender, EventArgs e)
         {
             CopyFileToUploadLoation("paper");
+            PlaySoundFile("Bin3Sound.wav");
         }
 
         private void btnLandFillBin_Click(object sender, EventArgs e)
         {
             CopyFileToUploadLoation("landfill");
+            PlaySoundFile("Bin4Sound.wav");
         }
 
 
@@ -174,8 +186,6 @@ namespace RecycleApp
 
                 dest = Path.Combine(dest, Path.GetFileName(_currentCaptureImageFile));
                 File.Copy(_currentCaptureImageFile, dest, true);
-                PlaySoundFile("SelectedBin.wav");
-
 
                 //Speak($"Thanks for your help! I'll study and learn more about the {tag} bin tonight!");
 
