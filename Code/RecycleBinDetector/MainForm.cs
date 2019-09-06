@@ -4,6 +4,8 @@ using System.Configuration;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Media;
+using System.Speech.Synthesis;
 using System.Windows.Forms;
 using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction.Models;
 using RecycleApp.Properties;
@@ -111,6 +113,7 @@ namespace RecycleApp
                 ResultText.Text = $"{orderedPredictModels[0].Key.ToUpper()} BIN!" + Environment.NewLine +
                     "The power is yours!";
 
+            //Speak(ResultText.Text);
 
             var tagResults = new Dictionary<string, double>();
 
@@ -121,6 +124,8 @@ namespace RecycleApp
             }
 
             StatisticText.Text = statisticText;
+
+            PlaySoundFile("PowerIsYours.wav");
         }
 
     private string GetDisplayProbability(double probability)
@@ -168,11 +173,38 @@ namespace RecycleApp
                     Directory.CreateDirectory(dest);
 
                 dest = Path.Combine(dest, Path.GetFileName(_currentCaptureImageFile));
-                File.Copy(_currentCaptureImageFile, dest);
+                File.Copy(_currentCaptureImageFile, dest, true);
+                PlaySoundFile("SelectedBin.wav");
 
-                MessageBox.Show($"Thanks for your help! I'll study and learn more about the {tag} bin tonight!",
-                    "Captain Planet");
+
+                //Speak($"Thanks for your help! I'll study and learn more about the {tag} bin tonight!");
+
+                //MessageBox.Show($"Thanks for your help! I'll study and learn more about the {tag} bin tonight!",
+                //    "Captain Planet");
             }
+        }
+
+        private void Speak(string text)
+        {
+            // Initialize a new instance of the SpeechSynthesizer.  
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+
+            // Configure the audio output.   
+            synth.SetOutputToDefaultAudioDevice();
+            synth.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Adult);
+
+            // Speak a string.  
+            synth.Speak(text);
+
+        }
+
+        private void PlaySoundFile(string file)
+        {
+            
+            var player = new SoundPlayer();
+
+            player.SoundLocation = file;
+            player.Play();
         }
 
         private void StatisticText_Click(object sender, EventArgs e)
